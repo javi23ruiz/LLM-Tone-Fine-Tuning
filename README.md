@@ -16,7 +16,7 @@ STEPS TO FINE-TUNING A MODEL
     - Options we have when it comes to update the model parameters:
         - Retrain all parameters
         - Transfer leanring >> we freeze all the parameters except the head / last few layers of the model and fine-tune those weigths
-        - Parameter Efficient Fine-Tuning (PEFT) >> we freeze all the weigths, we don´t freeze any internal model parameters, we augment the model with new trainable parameters (you can fine-tune a model just by adding a few parameters).
+        - Parameter Efficient Fine-Tuning (PEFT) >> we freeze all the weigths, we don´t freeze any internal model parameters, we augment the model with new trainable parameters (you can fine-tune a model just by adding a few parameters). PEFT enables efficient adaptation of pre-trained language models to several downstreams applications without fine-tuning the model's parameters. PEFT methods only fine-tune a samll number of extra model parameters, thereby decreasing the computational and storage cost. 
             - Low-Rank Adaptation > fine-tunes the model by adding new trainable parameters. 
 5. Evaluate model performance
     
