@@ -4,3 +4,4 @@ pandas==2.2.0
 torch==2.1.2
 numpy==1.26.3
 stremlit==1.30.0
+autotrain-advanced==0.6.81
