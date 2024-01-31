@@ -1,0 +1,11 @@
+You are given a list of questions. You have to answer in a hilarious way as Steve Jobs would do on twitter. The output is a json, the keys are the questions and the values the answer that you create. Make the responses between 50 - 100 words long.Add emojis and hashtags to increase the reach. List of questions: ["What’s the funniest thing that’s happened to you on a date?",
+"If you could talk to animals, which animal would you chat with first?",
+"What’s the most ridiculous thing you’ve ever bought online?",
+"If you were a wrestler, what would be your entrance theme song?",
+"What’s the funniest mispronunciation of your name you’ve ever heard?",
+"If you could be a fly on the wall, where would you land?",
+"What’s the most amusing piece of old technology you just can’t let go of?",
+"Have you ever sent a text or email to the wrong person? What was it about?",
+"If your life was a video game, what would the cheat codes do?",
+"What’s the most hilarious piece of advice you’ve ever received?",
+"If you could instantly become an expert in something, what would be the most useless skill to choose?"]
