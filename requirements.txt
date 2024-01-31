@@ -1,5 +1,6 @@
 openai==1.1.0
-transformers==4.37.1
+transformers>=4.37.1
 pandas==2.2.0
 torch==2.1.2
-
+numpy==1.26.3
+stremlit==1.30.0
