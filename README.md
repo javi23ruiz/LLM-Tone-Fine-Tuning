@@ -4,8 +4,8 @@ I will focus on open-source smaller LLMs to make them answer as a particular cel
 
 Ways to fine-tune models
 - Self-supervised
-- Supervised Fine Tuning: we have a dataset with inputs and outputs >> question-asnwer pairs
-- Reinforcement learning
+- Supervised Fine Tuning: we have a dataset with inputs and outputs >> question-asnwer pairs. Supervised fine-tuning is a technique where you train the LLM on a dataset of data that contains labels. This means that the model knows what the correct output is for each input. The model learns to map the input to the output by minimizing a loss function
+- Reinforcement learning from HUman Feedback (RLHF) >> the basic idea is that you give the LLM a prompt and it generates an output. Then, you ask a human to rate the output. The rating is used as a signal to fine-tune the LLM to generate higher-quality output
 
 STEPS TO FINE-TUNING A MODEL
 1. Choose fine-tuning task
@@ -14,7 +14,7 @@ STEPS TO FINE-TUNING A MODEL
 3. Choose a base model
 4. Fine-tune model via supervised learning
     - Options we have when it comes to update the model parameters:
-        - Retrain all parameters >> updates all the model weigths (7B model has 7B weigths..) Parameters get updated repeadtedly (go through your data via multiple epochs)
+        - Retrain all parameters
         - Transfer leanring >> we freeze all the parameters except the head / last few layers of the model and fine-tune those weigths
         - Parameter Efficient Fine-Tuning (PEFT) >> we freeze all the weigths, we don´t freeze any internal model parameters, we augment the model with new trainable parameters (you can fine-tune a model just by adding a few parameters). PEFT enables efficient adaptation of pre-trained language models to several downstreams applications without fine-tuning the model's parameters. PEFT methods only fine-tune a samll number of extra model parameters, thereby decreasing the computational and storage cost. 
             - Low-Rank Adaptation > fine-tunes the model by adding new trainable parameters. 
@@ -37,23 +37,5 @@ I used the following prompts to create questions for the trainig datasets:
 
 ## 4. FINE-TUNE MODEL VIA SUPERVISED LEARNING
 
-- LoRA (Low Rank Adaptation) >> it freezes all the weigths of the pre-trained llm matrix and fine-tunes two smaller matrices (adpaters). LoRa represents the weigths updates with two smaller matrices through low-rank decomposition. These new matrices are used to adapt to the new data while keeping the number of update params low. These weight changes in trhe new matrices are tracked in **two separte smaller matrcies (low rank matrcies)** that get multiplied together to form a matrix of the same size as the models´s weigth matrix The fine-tuned adapter is loaded to the pretrained model and used for inference, both the original and adapter weigths are combined.
-    - As with other methods supported by PEFT, to fine-tune a model using LoRA, you need to:
-        1. Instantiate a base model.
-        2. Create a configuration (LoraConfig) where you define LoRA-specific parameters.
-              - Rank >> as rank increase you train more parameters. Increases the precision. Higher rank is for very complex tasks, with llms that have been trained on a huge amount of data, the model could do the specific task by prompt engineering.
-              - From the paper: training all layers of the network is necessary to match performance of full-parameter fine-tuning
-              - From LoRA paper >> rank may not matter from 8 to 256.
-              - Alpha >> determines a scaling factor before the new weigths get added to the original weights. Scale multiplier = alpha / rank. Microsoft LoRA sets 2XRank. QLoRA is 1 / 4.
-              - Dropout to avoid overfitting >> randonmly leaves out some weigths unchanged. 
-        4. Wrap the base model with get_peft_model() to get a trainable PeftModel.
-        5. Train the PeftModel as you normally would train the base model.
-- QLoRA >> more effecient that LoRA where the pretrained model is loaded to GPU as quantized 4-bit weigths (compared to 8 bits weigths of LoRA)
 ## 5. EVALUATE MODEL PERFORMANCE
 
-
-
-####  REFERENCES
-https://www.databricks.com/blog/efficient-fine-tuning-lora-guide-llms
-https://huggingface.co/docs/peft/main/en/conceptual_guides/lora
-https://www.entrypointai.com/blog/lora-fine-tuning/
